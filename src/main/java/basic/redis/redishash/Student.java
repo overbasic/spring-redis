@@ -1,4 +1,4 @@
-package basic.redis;
+package basic.redis.redishash;
 
 import org.springframework.data.redis.core.RedisHash;
 
