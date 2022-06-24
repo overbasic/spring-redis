@@ -73,10 +73,11 @@ public class MessagingRedisApplication {
 
         RedisTemplateWrapper template = ctx.getBean(RedisTemplateWrapper.class);
         FoodReceiver foodReceiver = ctx.getBean(FoodReceiver.class);
+        ChatReceiver chatReceiver =ctx.getBean(ChatReceiver.class);
         ObjectMapper mapper = ctx.getBean(ObjectMapper.class);
         String message = mapper.writeValueAsString(new ChatDto("John", "hello "));
 
-        while (foodReceiver.getCount() == 0) {
+        while (foodReceiver.getCount() == 0 && chatReceiver.getCount() == 0) {
             LOGGER.info("Sending message...");
 
             Long count = template.convertAndSendBack("chat", message);

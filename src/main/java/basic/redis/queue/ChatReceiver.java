@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ChatReceiver {
-    private static final Logger LOGGER = LoggerFactory.getLogger(FoodReceiver.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ChatReceiver.class);
 
     private AtomicInteger counter = new AtomicInteger();
 
