@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 
 @RestController
 @RequestMapping("/waiting")
@@ -17,15 +18,15 @@ public class WaitingController {
     private final WaitingService waitingService;
 
     @GetMapping
-    public ResponseEntity<WaitingStatus> getWaitingStatus(
+    public Flux<WaitingStatus> getWaitingStatus(
         @RequestParam Long userId,
         @RequestParam String eventKey) {
-        return ResponseEntity.ok(waitingService.getWaitingStatus(eventKey, userId));
+        return Flux.just(waitingService.getWaitingStatus(eventKey, userId));
     }
 
     @PostMapping
-    public ResponseEntity<Void> addWaitingQueue(@RequestBody WaitingRequest request) {
+    public Flux<Void> addWaitingQueue(@RequestBody WaitingRequest request) {
         waitingService.addQueue(request.eventKey(), request.userId());
-        return ResponseEntity.ok().build();
+        return Flux.just();
     }
 }

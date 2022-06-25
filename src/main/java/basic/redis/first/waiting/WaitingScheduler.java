@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-//@EnableScheduling
+@EnableScheduling
 @RequiredArgsConstructor
 public class WaitingScheduler {
 
